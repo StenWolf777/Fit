@@ -59,7 +59,7 @@ public class WorkoutService {
         Workout workout = modelMapper.map(workoutDto, Workout.class);
         workout.setUser(user);
 
-        // Calculate duration if not provided but start and end times are
+
         if (workout.getDurationMinutes() == 0 && workout.getStartTime() != null && workout.getEndTime() != null) {
             long minutes = java.time.Duration.between(workout.getStartTime(), workout.getEndTime()).toMinutes();
             workout.setDurationMinutes((int) minutes);

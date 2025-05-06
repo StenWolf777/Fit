@@ -39,9 +39,9 @@ public class UserService {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
-        // Update user fields
+
         modelMapper.map(userDto, existingUser);
-        existingUser.setId(id); // Ensure ID doesn't change
+        existingUser.setId(id);
 
         User updatedUser = userRepository.save(existingUser);
         return modelMapper.map(updatedUser, UserDto.class);
